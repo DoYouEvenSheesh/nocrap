@@ -12,8 +12,15 @@
     </div>
     
     <div class = "container">
-      <textarea id="userInput" placeholder="Paste away..."></textarea>
-      <div id="output">Output will appear here</div>
+      <form method="POST" action="/">
+        <textarea id="userInput" placeholder="Paste away..."></textarea>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+
+      {% if output %}
+        <div id="output">Output will appear here</div>
+      {% endif %}
     </div>
 
 </body>
