@@ -1,7 +1,12 @@
-import os, sys
-from anthropic import Anthropic 
+import os
+#from dotenv import load_dotenv
+from anthropic import Anthropic
 
-XAI_API_KEY = os.getenv("XAI_API_KEY")
+#load api key from env file
+#load_dotenv()
+
+XAI_API_KEY = "xai-h2xnzpYE5uJfQdGj49RhKpVrTy1S9g3lYWWYec8UkVMz0onsEEUXOdp9fXaOQiBZ1Z4ylyGnzII5A2Ji"
+
 client = Anthropic(
     api_key=XAI_API_KEY,
     base_url="https://api.x.ai",
@@ -18,7 +23,7 @@ systemPrompt = """You are an AI bot who will take user input and do the followin
 
                 
 
-def grokOutput(input):
+def grokOutput(input: str):
     message = client.messages.create(
         model="grok-beta",
         max_tokens=500,
@@ -31,12 +36,8 @@ def grokOutput(input):
         ]
     )
 
-    return str(message.content)
+    return (str(message.content[0].text))
 
 
 
-grokOutput("""wiped: The School that Banned Smartphones, hosted by Matt and Emma Willis, is based at The Stanway School in Colchester, and challenged a group of Year 8 pupils to give up their smartphones completely for 21 days. 
 
-The experiment, led by Professor Lisa Henderson and Dr Emma Sullivan from the University, saw pupils undergo a series of tests, with experts monitoring their behavioural changes throughout the period, and repeating the tests at the end of the three weeks to conclude what effects giving up your phone really does have on your brain including sleep, wellbeing and cognition.
-
-They found that students in the phone ban group experienced notable improvements in their sleep. On average, they were falling asleep 20 minutes faster than before the ban, and reported getting a full hour of extra rest each nig""")
