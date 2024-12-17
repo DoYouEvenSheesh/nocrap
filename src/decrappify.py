@@ -1,14 +1,14 @@
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 from anthropic import Anthropic
 
 #load api key from env file
-#load_dotenv()
+load_dotenv()
+api_key = os.getenv("XAI_API_KEY")
 
-XAI_API_KEY = "xai-h2xnzpYE5uJfQdGj49RhKpVrTy1S9g3lYWWYec8UkVMz0onsEEUXOdp9fXaOQiBZ1Z4ylyGnzII5A2Ji"
 
 client = Anthropic(
-    api_key=XAI_API_KEY,
+    api_key=api_key,
     base_url="https://api.x.ai",
 )
 
