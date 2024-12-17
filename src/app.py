@@ -12,7 +12,7 @@ def home():
         user_input = request.form.get("input")
 
         output = grokOutput(user_input)
-    return render_template("index.html", input=user_input, output=output)
+    return render_template("index.html", output=output)
 
 
 if __name__ == "__main__":
