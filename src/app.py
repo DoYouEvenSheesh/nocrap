@@ -1,17 +1,18 @@
 from flask import Flask, redirect, url_for, render_template, request
+from decrappify import grokOutput
 
 app = Flask(__name__)
 
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    output = None
+    output = "Text will be displayed here."
     
     if request.method == "POST":
-        user_input = request.form.get("userInput", "")
+        user_input = request.form.get("input")
 
-        output = user_input[::-1]
-    return render_template("index.html", output=output)
+        output = grokOutput(user_input)
+    return render_template("index.html", input=user_input, output=output)
 
 
 if __name__ == "__main__":
