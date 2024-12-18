@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    output = "Text will be displayed here."
+    output = "Summary will be displayed here."
     
     if request.method == "POST":
         user_input = request.form.get("input")
