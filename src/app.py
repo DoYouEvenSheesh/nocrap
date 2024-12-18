@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-from decrappify import grokOutput
+from decrappify_edited import grokOutput
 
 app = Flask(__name__)
 
