@@ -33,10 +33,13 @@ def grokOutput(input: str):
                 "role": "user",
                 "content" : input,
             },
-        ]
+        ],
+        stream = True
     )
 
-    return (str(message.content[0].text))
+    for event in message:
+        if event.type == "content_block_delta":
+            print(event.delta.text, end = "", flush = True) 
 
 
 
