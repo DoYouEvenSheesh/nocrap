@@ -39,7 +39,7 @@ def grokOutput(input: str):
 
     for event in message:
         if event.type == "content_block_delta":
-            print(event.delta.text, end = "", flush = True) 
+            return(event.delta.text, end == "", flush == True) 
 
 
 
