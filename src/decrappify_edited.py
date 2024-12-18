@@ -28,6 +28,8 @@ def grokOutput(input: str):
         model="grok-beta",
         max_tokens=500,
         system=systemPrompt,
+        stream = True,
+        temperature = 0,
         messages=[
             {
                 "role": "user",
@@ -35,8 +37,9 @@ def grokOutput(input: str):
             },
         ]
     )
-
-    return (str(message.content[0].text))
+    for event in message:
+        if event.type == "content_block_delta":
+         print(event.delta.text, flush = True, end = "")
 
 
 
